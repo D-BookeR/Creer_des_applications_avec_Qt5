@@ -6,7 +6,6 @@
 #include "view.h"
 #include "navigationwidget.h"
 
-//@extract-start Qt-commun-QGraphicsView-ex-construct-view-cpp
 View::View(QGraphicsScene *scene) :
     QGraphicsView(scene)
 {
@@ -24,9 +23,7 @@ View::View(QGraphicsScene *scene) :
     connect(this, &View::displayChanged, navWidget, &NavigationWidget::slotNavigateTo);
     connect(navWidget, &NavigationWidget::moved, this, &View::slotNavigateTo);
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-getView-view-cpp
 View* View::getView(QGraphicsItem *item)
 {
     return static_cast<View *>(item->scene()->views().first());
@@ -41,9 +38,7 @@ void View::notifyDirChanged(const DirData *dir)
 {
     emit dirChanged(dir);
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-zoom-view-cpp
 void View::zoom(int delta)
 {
     double zoom = 1.0 + (delta / 1000.0);
@@ -55,9 +50,7 @@ void View::wheelEvent(QWheelEvent *event)
     zoom(event->delta());
     event->accept();
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-resizeEvent-view-cpp
 void View::resizeEvent(QResizeEvent *event)
 {
     QGraphicsView::resizeEvent(event);
@@ -65,9 +58,7 @@ void View::resizeEvent(QResizeEvent *event)
     QRectF visibleRect = QRectF(mapToScene(rect().topLeft()), mapToScene(rect().bottomRight()));
     emit displayChanged(visibleRect, sceneRect());
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-scrollContentsBy-view-cpp
 void View::scrollContentsBy(int dx, int dy)
 {
     QGraphicsView::scrollContentsBy(dx, dy);
@@ -75,9 +66,7 @@ void View::scrollContentsBy(int dx, int dy)
     QRectF visibleRect = QRectF(mapToScene(rect().topLeft()), mapToScene(rect().bottomRight()));
     emit displayChanged(visibleRect, sceneRect());
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-slotNavigateTo-view-cpp
 void View::slotNavigateTo(QRect navRect, QRect bgRect)
 {
     QScrollBar* bar = horizontalScrollBar();
@@ -88,4 +77,3 @@ void View::slotNavigateTo(QRect navRect, QRect bgRect)
     sizeRatio = (qreal)(bar->maximum() - bar->minimum()) / (bgRect.height() - navRect.height());
     bar->setValue(bar->minimum() + (ceil(sizeRatio)) * (navRect.y()-bgRect.y()));
 }
-//@extract-end

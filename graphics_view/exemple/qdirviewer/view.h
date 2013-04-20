@@ -6,7 +6,6 @@
 class FileData;
 class DirData;
 
-//@extract-start Qt-commun-QGraphicsView-ex-view-h
 class View : public QGraphicsView
 {
 public:
@@ -33,6 +32,5 @@ protected:
     virtual void resizeEvent (QResizeEvent *event);
     virtual void scrollContentsBy (int dx, int dy);
 };
-//@extract-end
 
 #endif // VIEW_H

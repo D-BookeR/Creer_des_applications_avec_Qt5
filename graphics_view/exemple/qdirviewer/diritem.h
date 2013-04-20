@@ -4,7 +4,6 @@
 #include <QGraphicsRectItem>
 #include "dirdata.h"
 
-//@extract-start Qt-commun-QGraphicsView-ex-diritem-h
 class DirItem : public QGraphicsRectItem
 {
 
@@ -20,6 +19,5 @@ protected:
 private:
     const DirData *m_Dir;
 };
-//@extract-end
 
 #endif // DIRITEM_H

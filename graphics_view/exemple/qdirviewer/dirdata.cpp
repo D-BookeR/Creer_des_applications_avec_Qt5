@@ -3,7 +3,6 @@
 #include <QDir>
 #include <QMimeDatabase>
 
-//@extract-start Qt-commun-QGraphicsView-ex-addSize-dirdata-cpp
 static void addSize(QMap<QString, qint64> &m, QString key, qint64 value)
 {
     if (!m.contains(key)) {
@@ -13,7 +12,6 @@ static void addSize(QMap<QString, qint64> &m, QString key, qint64 value)
         m.insert(key, m.value(key) + value);
     }
 }
-//@extract-end
 
 DirData::DirData(QString name, DirData *parent) :
     m_Name(name),
@@ -32,7 +30,6 @@ DirData::~DirData()
     }
 }
 
-//@extract-start Qt-commun-QGraphicsView-ex-load-dirdata-cpp
 void DirData::load(QString path)
 {
     m_MimeDB = m_Parent ? m_Parent->m_MimeDB : new QMimeDatabase();
@@ -57,7 +54,6 @@ void DirData::load(QString path)
         }
      }
 }
-//@extract-end
 
 qint64 DirData::filesSize() const
 {
@@ -68,7 +64,6 @@ qint64 DirData::filesSize() const
     return size;
 }
 
-//@extract-start Qt-commun-QGraphicsView-ex-size-dirdata-cpp
 qint64 DirData::size(QString type) const
 {
     if (m_Size != 0 && type.isEmpty()) {
@@ -94,7 +89,6 @@ qint64 DirData::size(QString type) const
     }
     return res;
 }
-//@extract-end
 
 qint64 DirData::fileCount() const
 {
@@ -107,7 +101,6 @@ qint64 DirData::fileCount() const
     return m_Files.size() + subDirsCount;
 }
 
-//@extract-start Qt-commun-QGraphicsView-ex-typeSizes-dirdata-cpp
 QMap<QString, qint64> DirData::typeSizes() const
 {
     QMap<QString, qint64> res;
@@ -128,7 +121,6 @@ QMap<QString, qint64> DirData::typeSizes() const
 
     return res;
 }
-//@extract-end
 
 QString DirData::path() const
 {

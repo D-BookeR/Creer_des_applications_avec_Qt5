@@ -3,7 +3,6 @@
 
 #include <QString>
 
-//@extract-start Qt-commun-QGraphicsView-ex-filedata-h
 class FileData
 {
 public:
@@ -19,6 +18,5 @@ private:
     QString m_Type;
     QString m_Name;
 };
-//@extract-end
 
 #endif // FILEDATA_H

@@ -6,7 +6,6 @@
 
 class View;
 
-//@extract-start Qt-commun-QGraphicsView-ex-fileitem-h
 class FileItem : public QGraphicsRectItem
 {
 public:
@@ -22,6 +21,5 @@ protected:
 private:
     const FileData *m_File;
 };
-//@extract-end
 
 #endif // FILEITEM_H

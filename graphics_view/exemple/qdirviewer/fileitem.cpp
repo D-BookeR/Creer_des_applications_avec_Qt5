@@ -14,7 +14,6 @@ FileItem::FileItem(const FileData *file, const QRectF &rect, QGraphicsItem *pare
     setBrush(QBrush(colorFromType(file->type())));
 }
 
-//@extract-start Qt-commun-QGraphicsView-ex-colorFromType-fileitem-cpp
 QColor FileItem::colorFromType(QString type)
 {
     quint16 crc = qChecksum(type.toLatin1().constData(), type.size());
@@ -24,9 +23,7 @@ QColor FileItem::colorFromType(QString type)
 
     return QColor(r, g, b);
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-hover-fileItem-cpp
 void FileItem::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
 {
     Q_UNUSED(event);
@@ -38,4 +35,3 @@ void FileItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
     Q_UNUSED(event);
     View::getView(this)->notifyFileChanged(NULL);
 }
-//@extract-end

@@ -1,7 +1,6 @@
 #include <QApplication>
 #include <QFileDialog>
 
-//@extract-start Qt-commun-QGraphicsView-ex-main
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
@@ -19,4 +18,3 @@ int main(int argc, char *argv[])
     
     return a.exec();
 }
-//@extract-end

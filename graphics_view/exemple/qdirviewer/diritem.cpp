@@ -2,7 +2,6 @@
 #include "mainwindow.h"
 #include "view.h"
 
-//@extract-start Qt-commun-QGraphicsView-ex-diritem-cpp
 DirItem::DirItem(DirData *dir, const QRectF &rect, QGraphicsItem *parent) :
     QGraphicsRectItem(rect, parent), m_Dir(dir)
 {
@@ -22,4 +21,3 @@ void DirItem::hoverLeaveEvent(QGraphicsSceneHoverEvent *event)
     setBrush(QBrush(Qt::NoBrush));
     View::getView(this)->notifyDirChanged(NULL);
 }
-//@extract-end

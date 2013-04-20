@@ -17,7 +17,6 @@ void DirLoader::stop()
     m_Stop = true;
 }
 
-//@extract-start Qt-commun-QGraphicsView-ex-load-dirloader-cpp
 void  DirLoader::load()
 {
     loadDir(m_Path, m_DirData);
@@ -40,4 +39,3 @@ void  DirLoader::loadDir(QString path, DirData *dirData)
         loadDir(subDir->path(), subDir);
     }
 }
-//@extract-end

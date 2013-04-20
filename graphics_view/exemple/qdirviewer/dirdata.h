@@ -8,7 +8,6 @@
 
 class QMimeDatabase;
 
-//@extract-start Qt-commun-QGraphicsView-ex-dirdata-h
 class DirData
 {
 public:
@@ -36,6 +35,5 @@ private:
     QMimeDatabase          *m_MimeDB;
     DirData                *m_Parent;
 };
-//@extract-end
 
 #endif // DIRDATA_H

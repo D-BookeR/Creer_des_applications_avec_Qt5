@@ -20,7 +20,6 @@ static void addDirTreeMap(QGraphicsScene *scene, DirData *d, QRectF bounds=QRect
 static void addSubDirs(QGraphicsScene *scene, DirData *d, QRectF bounds);
 static void addDirFiles(DirItem *dirItem, QRectF bounds);
 
-//@extract-start Qt-commun-QGraphicsView-ex-squarify-mainwindow-cpp
 static void squarify(QVector<QRectF> &rects)
 {
     QRectF currentLayer;
@@ -55,9 +54,7 @@ static void squarify(QVector<QRectF> &rects)
         }
     }
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-construct-mainwindow-cpp
 MainWindow::MainWindow(QString dirName, QWidget *parent) :
     QMainWindow(parent)
 {
@@ -74,7 +71,6 @@ MainWindow::MainWindow(QString dirName, QWidget *parent) :
     m_DirLoader->moveToThread(m_LoaderThread);
     m_LoaderThread->start();
 }
-//@extract-end
 
 MainWindow::~MainWindow()
 {}
@@ -88,7 +84,6 @@ void MainWindow::slotOnQuit()
     }
 }
 
-//@extract-start Qt-commun-QGraphicsView-ex-slotDirContentLoaded-mainwindow-cpp
 void MainWindow::slotDirContentLoaded(qint64 size)
 {
     if (size == 0) {
@@ -128,9 +123,7 @@ void MainWindow::slotDirContentLoaded(qint64 size)
 
     setWindowTitle(tr("%1 - %2 directories").arg(m_DirData.name()).arg(m_LoadingScene->items().size()));
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-slotLoadFinished-mainwindow-cpp
 void MainWindow::slotLoadFinished(QString path)
 {
     QGraphicsScene *dirTreeScene = new QGraphicsScene(this);
@@ -152,9 +145,7 @@ void MainWindow::slotLoadFinished(QString path)
 
     setWindowTitle(tr("%1 - %2 files - %3 ms").arg(path).arg(m_DirData.fileCount()).arg(m_Timer.elapsed()));
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-addDirTreeMap-mainwindow-cpp
 static void addDirTreeMap(QGraphicsScene *scene, DirData *d, QRectF bounds)
 {
     qint64 dirSize = d->size();
@@ -181,9 +172,7 @@ static void addDirTreeMap(QGraphicsScene *scene, DirData *d, QRectF bounds)
     subDirRect.setTop(filesRect.bottom());
     addSubDirs(scene, d, subDirRect);
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-addDirFiles-mainwindow-cpp
 void addDirFiles(DirItem *dirItem, QRectF bounds)
 {
     const DirData *d = dirItem->dirData();
@@ -210,9 +199,7 @@ void addDirFiles(DirItem *dirItem, QRectF bounds)
         new FileItem(&f, fileRects[pos++], dirItem);
     }
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-addSubDirs-mainwindow-cpp
 void addSubDirs(QGraphicsScene *scene, DirData *d, QRectF bounds)
 {
     qint64 subDirsSize = d->size() - d->filesSize();
@@ -236,9 +223,7 @@ void addSubDirs(QGraphicsScene *scene, DirData *d, QRectF bounds)
         addDirTreeMap(scene, subdir, subDirRects[pos++]);
     }
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-addDirPieChart-mainwindow-cpp
 static void addDirPieChart(QGraphicsScene *scene, DirData *d)
 {
     qint64 totalSize = d->size();
@@ -294,9 +279,7 @@ static void addDirPieChart(QGraphicsScene *scene, DirData *d)
 
     scene->setSceneRect(scene->itemsBoundingRect().adjusted(-10, -10, 10, 10));
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-createChartWidget-mainwindow-cpp
 void MainWindow::createChartWidget()
 {
     QGraphicsScene* scene = new QGraphicsScene(this);
@@ -312,9 +295,7 @@ void MainWindow::createChartWidget()
     chartDock->setWidget(dirChartView);
     addDockWidget(Qt::RightDockWidgetArea, chartDock);
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-createPropertiesWidget-mainwindow-cpp
 void MainWindow::createPropertiesWidget()
 {
     QWidget *content = new QWidget;
@@ -329,9 +310,7 @@ void MainWindow::createPropertiesWidget()
     propertiesWidget->setWidget(content);
     addDockWidget(Qt::BottomDockWidgetArea, propertiesWidget);
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-setproperties-mainwindow-cpp
 static void setElidedText(QLabel *label, QString text)
 {
     QFontMetrics metrics(label->font());
@@ -349,4 +328,3 @@ void MainWindow::setDirProperties(const DirData *dir)
 {
     setElidedText(&m_DirName, dir ? dir->path() : "");
 }
-//@extract-end

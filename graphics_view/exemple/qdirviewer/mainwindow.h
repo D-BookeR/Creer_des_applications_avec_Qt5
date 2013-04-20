@@ -14,7 +14,6 @@ class QDir;
 class QThread;
 class QGraphicsView;
 class QGraphicsScene;
-//@extract-start Qt-commun-QGraphicsView-ex-mainwindow-h
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -45,6 +44,5 @@ private:
     QGraphicsView              *m_LoadingView;
     QGraphicsScene             *m_LoadingScene;
 };
-//@extract-end
 
 #endif // MAINWINDOW_H

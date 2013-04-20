@@ -3,7 +3,6 @@
 
 #include <QObject>
 
-//@extract-start Qt-commun-QGraphicsView-ex-dirloader-h
 class DirData;
 
 class DirLoader : public QObject
@@ -26,6 +25,5 @@ private:
     DirData    *m_DirData;
     QString     m_Path;
 };
-//@extract-end
 
 #endif // DIRLOADER_H

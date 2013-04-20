@@ -5,7 +5,6 @@
 
 class QGraphicsView;
 
-//@extract-start Qt-commun-QGraphicsView-ex-navigationwidget-h
 class NavigationWidget : public QFrame
 {
     Q_OBJECT
@@ -24,6 +23,5 @@ protected:
 private:
     QRect   m_bgRect;
 };
-//@extract-end
 
 #endif // NAVIGATIONWIDGET_H

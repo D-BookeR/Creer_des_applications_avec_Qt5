@@ -4,7 +4,6 @@
 
 #include "navigationwidget.h"
 
-//@extract-start Qt-commun-QGraphicsView-ex-construct-navigationwidget-cpp
 NavigationWidget::NavigationWidget(QGraphicsView *parent) :
     QFrame(parent)
 {
@@ -17,9 +16,7 @@ NavigationWidget::NavigationWidget(QGraphicsView *parent) :
 
     setGeometry(m_bgRect);
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-mouseMoveEvent-navigationwidget-cpp
 void NavigationWidget::mouseMoveEvent(QMouseEvent *event)
 {
     Q_UNUSED(event);
@@ -34,9 +31,7 @@ void NavigationWidget::mouseMoveEvent(QMouseEvent *event)
 
     emit moved(QRect(newPos, size()), m_bgRect);
 }
-//@extract-end
 
-//@extract-start Qt-commun-QGraphicsView-ex-slotNavigateTo-navigationwidget-cpp
 void NavigationWidget::slotNavigateTo(QRectF navRect, QRectF bgRect)
 {
     QRect newRect;
@@ -53,4 +48,3 @@ void NavigationWidget::slotNavigateTo(QRectF navRect, QRectF bgRect)
 
     setGeometry(newRect);
 }
-//@extract-end
