@@ -1,0 +1,10 @@
+*.bak
+Thumbs.db
+*~
+*.ods#
+*.log
+msvc9/
+*.o
+*.obj
+*.exe
+*.pro.user

@@ -107,16 +107,16 @@ QGraphicsSimpleTextItem* drawSimpleText()
 
 QGraphicsPathItem* drawPathComplex()
 {
-	QPainterPath painterpath;
+    QPainterPath path;
     QRectF rect(30.0, 30.0, 50.0, 50.0);
-	painterpath.addEllipse(rect);
-	painterpath.addRect(rect);
-    painterpath.addEllipse(rect.bottomRight(), rect.height() / 2.0, rect.height() / 2.0);
+    path.addEllipse(rect);
+    path.addRect(rect);
+    path.addEllipse(rect.bottomRight(), rect.height() / 2.0, rect.height() / 2.0);
 
     QGraphicsPathItem *item = new QGraphicsPathItem();
 	item->setPen(QPen(Qt::black));
 	item->setBrush(Qt::darkBlue);
-	item->setPath(painterpath);
+    item->setPath(path);
 
 	return item;
 }
