@@ -1,24 +1,6 @@
 #include <QApplication>
 #include <QGraphicsView>
-#include <QGraphicsScene>
-#include <QPainter>
-#include <QPainterPath>
-#include <QStyleOptionGraphicsItem>
-#include <QWidget>
 #include <QGraphicsItem>
-#include <QGraphicsRectItem>
-#include <QGraphicsPathItem>
-#include <QGraphicsPixmapItem>
-#include <QList>
-#include <QGraphicsEllipseItem>
-#include <QGraphicsPolygonItem>
-#include <QGraphicsTextItem>
-#include <QGraphicsSimpleTextItem>
-#include <QGraphicsProxyWidget>
-#include <QTextEdit>
-#include <QTabWidget>
-#include <QLineEdit>
-#include <QTransform>
 
 //------------------------ QGraphicsOriginItem ------------------------
 class QGraphicsOriginItem: public QGraphicsItem
