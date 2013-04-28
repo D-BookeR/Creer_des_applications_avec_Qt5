@@ -8,3 +8,4 @@ msvc9/
 *.obj
 *.exe
 *.pro.user
+*.qmlproject.user
