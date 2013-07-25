@@ -1,0 +1,3 @@
+Chaque étape du chapitre est parfois décomposée en sous-étapes, en blocs logiques qui poursuivent le développement de la fonctionnalité mais en corrigeant des bogues ennuyants, généralement. Ces sous-étapes sont numérotées avec un point. Il s'agit à chaque fois d'une évolution incrémentale.  
+
+D'autres fois, les étapes sont suffixées d'un b, pour indiquer qu'il s'agit d'une autre manière de réaliser l'étape (autre manière de penser, signaux de débogage utiles pour chipoter dans le code et comprendre les concepts mis en jeu). Ces versions ne sont pas reprises pour la suite du chapitre, car suboptimales. 
