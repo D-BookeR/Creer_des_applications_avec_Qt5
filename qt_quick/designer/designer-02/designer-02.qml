@@ -3,7 +3,7 @@ import QtQuick.Controls 1.0
 import QtQuick.Window 2.0
 
 ApplicationWindow {
-    id: applicationwindow
+    id: applicationwindow1
     width: 1056
     height: 346
     title: "designer-01"
