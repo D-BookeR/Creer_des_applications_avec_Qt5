@@ -22,6 +22,7 @@ Rectangle {
             text: channelName
             x: 73
             width: 62
+            opacity: 1
             clip: false
             font.bold: false
             anchors.top: parent.top
@@ -239,95 +240,7 @@ Rectangle {
                 text: "24 bits"
                 checked: false
             }
+
         }
     }
-
-    CheckBox {
-        id: check_box
-        x: 8 ; y: 6 ; width: 160; height: 39; text: ""
-        checked: true
-        onClicked: channel.state = check_box.checked ? '' : 'Invisible'
-        visible: channelName != "Master"
-    }
-
-    ProgressBar {
-        id: progress_bar_amplitude_vertical
-        x: 0
-        width: 12
-        opacity: 0
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 8
-        orientation: 0
-        anchors.top: parent.top
-        anchors.topMargin: 28
-        value: 0.4
-        indeterminate: false
-        anchors.leftMargin: 8
-        anchors.left: parent.left
-    }
-
-    states: [
-        State {
-            name: "Invisible"
-            PropertyChanges {
-                target: item
-                opacity: 0
-            }
-            PropertyChanges {
-                target: channel
-                width: 23
-            }
-
-            PropertyChanges {
-                target: progress_bar_amplitude_vertical
-                opacity: 1
-            }
-        }
-    ]
-
-    transitions: [
-        Transition {
-            from: "*" ; to: "Invisible"
-            SequentialAnimation {
-                PropertyAnimation {
-                    target: item
-                    properties: "opacity";
-                    duration: 100
-                }
-                NumberAnimation {
-                    target: channel
-                    properties: "width"
-                    easing.type: Easing.OutCubic
-                    duration: 300
-                }
-                PropertyAnimation {
-                    target: progress_bar_amplitude_vertical
-                    properties: "opacity";
-                    duration: 200
-                }
-            }
-        },
-
-        Transition {
-            from: "Invisible" ; to: "*"
-            SequentialAnimation {
-                PropertyAnimation {
-                    target: progress_bar_amplitude_vertical
-                    properties: "opacity";
-                    duration: 100
-                }
-                NumberAnimation {
-                    target: channel
-                    properties: "width"
-                    easing.type: Easing.InCubic
-                    duration: 400
-                }
-                PropertyAnimation {
-                    target: item
-                    properties: "opacity";
-                    duration: 200
-                }
-            }
-        }
-    ]
 }
