@@ -3,7 +3,7 @@ Créer des applications avec Qt 5
 
 Ce dépôt contient les codes sources des exemples du livre modulaire [Créer des applications avec Qt 5](http://www.d-booker.fr/110-qt-5-les-essentiels.html), dont une première partie *Les essentiels* va paraître en version bêta fin avril 2013.
 
-![Couverture du livre](qt-essentiels-couv.png)
+![Couverture du livre](qt-essentiels-couv.jpg)
 
 Ce livre est écrit sous la direction de Jonathan Courtois
 par Guillaume Belz, Thibaut Cuvelier, Ilya Dialo, Vincent Meyer et Florent Renault, 
