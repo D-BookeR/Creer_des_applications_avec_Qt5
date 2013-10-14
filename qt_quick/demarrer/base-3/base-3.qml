@@ -1,6 +1,6 @@
 import QtQuick 2.0
 
-Rectangle {
+Item {
     width: 400; height: 400
     Rectangle {
         id: monRectangle
