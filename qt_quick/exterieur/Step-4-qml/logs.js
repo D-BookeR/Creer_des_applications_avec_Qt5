@@ -21,9 +21,13 @@ function loadWeatherHistory() {
     if (db.isOpen()) {
         createDatabase(db);
         var res = db.executeSql("SELECT date, city FROM History ORDER BY date DESC LIMIT 6;");
-        for (var i = 0; !res.error && i < res.length; ++i) {
-            var item = res.items[i];
-            historyModel.append(item);
+        if (res.error) {
+            console.log("Error: " + res.errorStr);
+        } else {
+            for (var i = 0; i < res.length; ++i) {
+                var item = res.items[i];
+                historyModel.append(item);
+            }
         }
     }
     Sql.SQLExt.freeDatabaseSync(db);
