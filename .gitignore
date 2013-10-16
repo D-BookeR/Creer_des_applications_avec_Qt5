@@ -7,5 +7,5 @@ msvc9/
 *.o
 *.obj
 *.exe
-*.pro.user
-*.qmlproject.user
+*.pro.user*
+*.qmlproject.user*
