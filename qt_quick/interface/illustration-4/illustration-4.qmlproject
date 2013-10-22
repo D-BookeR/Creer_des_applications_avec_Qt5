@@ -3,7 +3,7 @@
 import QmlProject 1.1
 
 Project {
-    mainFile: "designer-02.qml"
+    mainFile: "illustration-4.qml"
     
     /* Include .qml, .js, and image files from current directory and subdirectories */
     QmlFiles {

@@ -3,10 +3,10 @@ import QtQuick.Controls 1.0
 import QtQuick.Window 2.0
 
 ApplicationWindow {
-    id: applicationwindow1
+    id: applicationwindow
     width: 1056
     height: 346
-    title: "designer-01"
+    title: "designer-03"
 
     Row {
         id: row1
