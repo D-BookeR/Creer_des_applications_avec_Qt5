@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
   QApplication a(argc, argv);
 
   QMainWindow w;
-  QLabel hello ( "Bonjour, Qt !", &w );
+  QLabel hello ( "Bonjour, je suis une application Qt !", &w );
   w.show();
 
   hello.setAlignment(Qt::AlignCenter);
