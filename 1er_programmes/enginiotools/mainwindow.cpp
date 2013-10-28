@@ -51,7 +51,9 @@ MainWindow::MainWindow(QWidget *parent)
   mainWidget->setMaximumWidth(400);
 
   connect (m_objectType, &QLineEdit::textChanged,
-           [=](const QString &text){actionWidget->setDisabled(text.isEmpty());});
+           [=](const QString &text){
+                actionWidget->setDisabled(text.isEmpty());
+           });
 
   connect(m_importFileButton, &QPushButton::clicked, this, &MainWindow::onImportFile);
   connect(m_importButton, &QPushButton::clicked, this, &MainWindow::onImport);
