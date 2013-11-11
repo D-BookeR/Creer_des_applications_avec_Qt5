@@ -1,6 +1,5 @@
 #include <QGraphicsView>
 #include <QMouseEvent>
-#include <QDebug>
 
 #include "navigationwidget.h"
 

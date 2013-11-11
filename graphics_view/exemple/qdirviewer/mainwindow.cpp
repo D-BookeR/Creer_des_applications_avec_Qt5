@@ -9,7 +9,6 @@
 #include <QResizeEvent>
 #include <QApplication>
 #include <QThread>
-#include <QDebug>
 
 #include "mainwindow.h"
 #include "view.h"

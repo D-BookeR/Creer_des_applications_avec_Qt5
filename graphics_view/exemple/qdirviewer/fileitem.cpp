@@ -1,6 +1,5 @@
 #include <QBrush>
 #include <QGraphicsSceneHoverEvent>
-#include <QDebug>
 
 #include "fileitem.h"
 #include "mainwindow.h"

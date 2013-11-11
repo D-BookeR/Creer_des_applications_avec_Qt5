@@ -1,7 +1,7 @@
 #include <QWheelEvent>
 #include <QGraphicsRectItem>
 #include <QScrollBar>
-#include <QDebug>
+#include <cmath>
 
 #include "view.h"
 #include "navigationwidget.h"
