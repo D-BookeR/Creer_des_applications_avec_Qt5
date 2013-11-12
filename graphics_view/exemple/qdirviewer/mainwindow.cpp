@@ -1,4 +1,4 @@
-#include <math.h>
+#include <cmath>
 #include <QDir>
 #include <QGraphicsTextItem>
 #include <QSplitter>
