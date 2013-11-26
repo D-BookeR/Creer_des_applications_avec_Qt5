@@ -1,0 +1,353 @@
+/****************************************************************************
+**
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
+** Contact: http://www.qt-project.org/legal
+**
+** This file is part of the documentation of Enginio.
+**
+** $QT_BEGIN_LICENSE:FDL$
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and Digia.  For licensing terms and
+** conditions see http://qt.digia.com/licensing.  For further information
+** use the contact form at http://qt.digia.com/contact-us.
+**
+** GNU Free Documentation License Usage
+** Alternatively, this file may be used under the terms of the GNU Free
+** Documentation License version 1.3 as published by the Free Software
+** Foundation and appearing in the file included in the packaging of
+** this file.  Please review the following information to ensure
+** the GNU Free Documentation License version 1.3 requirements
+** will be met: http://www.gnu.org/copyleft/fdl.html.
+** $QT_END_LICENSE$
+**
+****************************************************************************/
+
+/*!
+\page index.html
+\contentspage {Enginio Overview}{Contents}
+\indexpage Enginio Overview
+\startpage Enginio Overview
+\nextpage Enginio Installation and Prerequisits
+
+\title Enginio Overview
+
+Enginio is a Backend-as-a-Service solution to ease backend development for any connected and data-driven application.
+
+\section1 Tutorials
+
+To get started quickly follow the mini-tutorial using Qt Quick or C++.
+\list
+\li \l {Enginio Installation and Prerequisits}
+\li \l {Getting Started with Enginio using Qt Quick}
+\li \l {Getting Started with Enginio using C++}
+\endlist
+
+\section1 Reference documentation and examples:
+\list
+\li \l {Enginio Classes and QML Types}
+\li \l {Enginio Examples}
+\endlist
+
+\section1 Overview
+
+When using Enginio (with Qt Quick or C++) the API is following a general pattern that will be helpful to understand.
+This section gives a short high-level overview of the concepts used throughout the library.
+
+The Qt library is a client side library to communicate with the server at \l {http://engin.io}.
+For each account on the server several backends can exist.
+For all communication with the server the backend is determined by it's ID combined with a secret (similar to a password).
+When shipping an application built with Enginio the backend ID and secret will be the same for all users of that application.
+
+\section2 Objects
+
+Enginio provides several types of objects: "custom objects", "users", "user groups", "files" and more.
+All communication with the backend uses JSON. For QML JSON comes in very natural since
+the objects can simply be written inline. On the C++ side \l QJsonObject and \l QJsonValue are used.
+
+Each object in the database has an \c id, \c objectType, \c createdAt and \c updatedAt property that are reserved and always exist.
+For example a custom object with no additional properties (in JSON) might look like this:
+\code
+{
+    "id": "51cdbc08989e975ec300772a",
+    "objectType": "objects.todos",
+    "createdAt": "2013-06-28T16:38:32.369Z",
+    "updatedAt": "2013-06-28T16:38:32.725Z"
+}
+\endcode
+With this basis the objects can be augmented with user defined properties that contain the actual application data and can
+even contain other objects.
+For a more detailed description see the \l{http://engin.io/documentation/overview/objects}{Enginio Object documentation}.
+
+\section2 Operations
+
+To operate on objects of any type the basic operations are:
+\list
+\li create to create a new object
+\li query to list objects
+\li update to change an object
+\li remove to delete an object
+\endlist
+
+For a detailed description of the operations see the functions
+in the \l {EnginioClient}{EnginioClient Class} in C++ or \l {Enginio1::Enginio}{Enginio type} in QML.
+
+\note User management and access control lists are conveniently done by the same functions.
+
+\section2 File Management
+
+File management the operations are slightly different.
+Files are always attached to objects and can only be referenced through them.
+The Qt library provides convenient functions to up- and download files.
+
+The entire Enginio documentation including backend and client is available here: \l{http://engin.io/documentation/}{Enginio Documentation}
+*/
+
+/*!
+\page enginio-getting-started
+\indexpage Enginio Overview
+\nextpage Getting Started with Enginio using Qt Quick
+\previouspage Enginio Overview
+
+\title Enginio Installation and Prerequisits
+
+This guide shows how to use the Enginio Qt library in a Qt application
+(both Qt C++ and QML cases are covered).
+This guide can be also applied when integrating Enginio with existing Qt projects.
+
+\note The Enginio Qt library is currently under heavy development and not yet production ready.
+
+\section1 Prerequisites
+
+You can use Enginio with an existing installation of Qt 5.1 or later or get Qt packages containing Engino (starting with Qt 5.2).
+
+
+\list
+  \li  Development environment (Linux, Windows or Mac OS X) and compiler toolchain.
+  \li  Qt framework, 5.1 or newer (Qt 5.1.1 recommended)
+  \li  OpenSSL to enable SSL support in Qt.
+       Install the OpenSSL binaries into your system and Qt will automatically pick them up.
+
+       \list
+         \li Mac OS X: OpenSSL library should exist as preinstalled in system
+         \li Linux: Most distributions have preinstalled OpenSSL library. If yours doesn't, install libssl via your distribution's package manager
+         \li Windows: Install Win32 OpenSSL (light version is enough, copy DLLs to windows system directory when asked)
+       \endlist
+
+    \li Perl 5.10 or newer to enable Qt5 module compilation
+    \list
+        \li Mac OS X: Perl should exist as preinstalled in system
+        \li Linux: Perl should exist as preinstalled in system
+        \li Windows: Install some Perl distribution
+    \endlist
+\endlist
+
+\section1 Install Enginio Qt library
+
+\list
+  \li  Download the latest library release for your platform from Enginio dashboard.
+
+       Go to Enginio Dashboard ⇒ Open Dashboard left menu ⇒ Create backend
+        ⇒ Give some meaningful name for backend ⇒ Create
+        ⇒ See ’Qt Installers and Examples’ in backend home view
+        ⇒ Select your platform from drop-down ⇒ Click Download
+  \li  Execute downloaded binary installer and follow instructions
+\endlist
+*/
+
+/*!
+\page enginio-qml
+\indexpage Enginio Overview
+\nextpage Getting Started with Enginio using C++
+\previouspage Enginio Installation and Prerequisits
+
+\title Getting Started with Enginio using Qt Quick
+\brief Introduction to using Enginio using Qt Quick
+
+\section1 Setup a Qt Quick 2 application project
+
+Create a new Qt Quick 2 Application.
+
+You can use Qt Creator to get started with a template.
+(File ⇒ New File or Project ⇒ Applications ⇒ Qt Quick 2 Application)
+
+\section1 Initialize Enginio Client
+
+To use Enginio's QML API, you have to import the library.
+\code
+import Enginio 1.0
+\endcode
+
+Then initialize the \l{Enginio}{enginio client}, with \l{Enginio::backendId}{Backend Id} and Backend Secret values and those can be copied from the Dashboard.
+
+Go to Dashboard ⇒ Your Backend home-view ⇒ See ’Keys box’ ⇒ Copy Backend Id and Backend Secret values.
+
+\code
+Enginio {
+    id: enginio
+    backendId: "YOUR_OWN_BACKEND_ID"
+    backendSecret: "YOUR_OWN_BACKEND_SECRET"
+}
+\endcode
+
+\section1 Store your first Object
+
+Next store an Object to Enginio. First create an object in JSON format and fill it with data as you need. Then create operation to store the object and execute the asynchronous operation.
+
+\code
+Component.onCompleted: {
+    var city = {
+        objectType: "objects.city",
+        name: "Helsinki",
+        population: 606000
+    };
+    enginio.create(city);
+}
+\endcode
+
+Now you can \l{Checking stored objects in the Dashboard}{check the Enginio dashboard} for the newly created object.
+*/
+
+
+/*!
+\page enginio-cpp
+\indexpage Enginio Overview
+\nextpage Checking stored objects in the Dashboard
+\previouspage Getting Started with Enginio using Qt Quick
+
+\title Getting Started with Enginio using C++
+\brief Introduction to using Enginio using C++
+
+\section1 Setup Qt application project
+
+You need to link to Enginio. For QMake based projects simply add
+\code
+QT += enginio
+\endcode
+to your \c .pro file.
+
+\section1 Initialize Enginio Client
+
+To use Enginio Qt library in your code, you have to include relevant library headers.
+\code
+ #include <Enginio/Enginio>
+\endcode
+Before making any calls to the Enginio API, the \l EnginioClient needs to be instantiated.
+The constructor requires the \l{EnginioClient::backendId}{Backend ID} and \l{EnginioClient::backendSecret}{Backend Secret}.
+They can be copied from the Dashboard.
+Go to the \l{https://dashboard.engin.io/}{Enginio Dashboard} and select a backend.
+Copy the Backend Id and Backend Secret values.
+
+\code
+QString backendId("YOUR_OWN_BACKEND_ID");
+QString backendSecret("YOUR_OWN_BACKEND_SECRET");
+EnginioClient *client = new EnginioClient(backendId, backendSecret);
+\endcode
+For testing purposes it is easiest to hardcode the backend ID and backend secret directly into application code. But this might not be always the best choice and sometimes it might be beneficial to put backend configuration in separate configuration file.
+\section1 Store your first Object
+
+Create an object in JSON format and fill in the data:
+\code
+    QJsonObject city;
+    city.insert("objectType", QString("objects.city")); // an object type is required for all objects in Enginio
+    city.insert("name", QString("Oslo")); // other properties can be chosen freely
+    city.insert("population", 624000);
+\endcode
+
+Create the object in the Enginio database by calling \l{EnginioClient::create()}:
+\code
+    client->create(city);
+    connect(client, SIGNAL(finished(EnginioReply*)), this, SLOT(uploadFinished(EnginioReply*)));
+\endcode
+Note that \l{EnginioClient::create()}{create()} method performs the actual asynchronous network communication.
+You need to wait for its completion by connecting to the \l{EnginioClient::finished()}{finished} and \l{EnginioClient::error()}{error} signals.
+
+Now you can \l{Checking stored objects in the Dashboard}{check the Enginio dashboard} for the newly created object.
+*/
+
+
+/*!
+\page enginio-dashboard.html
+\title Checking stored objects in the Dashboard
+\indexpage Enginio Overview
+\previouspage Getting Started with Enginio using C++
+\nextpage Enginio Classes and QML Types
+
+When you have successfully stored objects with Qt C++ or QML code, go to your \l{https://dashboard.engin.io/}{Enginio Dashboard}
+and check the status there.
+
+\list
+\li Select the ’Objects’ view from top navigation bar.
+\li Make sure that objects.city is selected in the type drop-down.
+\li The list should now show a row for the object which was just uploaded.
+\endlist
+\image object_browser_first_city_object.png
+
+For more information on how to interact with Enginio, read the \l EnginioClient documentation.
+To get convenient access to objects stored in Enginio, consider using \l EnginioModel.
+*/
+
+/*!
+\page tutorials.html
+\title Enginio Tutorials
+\indexpage Enginio Overview
+
+\list
+\li \l {Enginio Installation and Prerequisits}
+\li \l {Getting Started with Enginio using Qt Quick}
+\li \l {Getting Started with Enginio using C++}
+\endlist
+*/
+
+/*!
+\page enginio-classes.html
+\title Enginio C++ Classes
+\indexpage Enginio Overview
+
+Enginio provides these \b{C++ classes}:
+\generatelist {classesbymodule enginio-qt}
+*/
+
+/*!
+\page enginio-qml-types.html
+\title Enginio QML Types
+\indexpage Enginio Overview
+
+Enginio provides these \b{QML types}:
+\annotatedlist engino-qml
+*/
+
+/*!
+\page enginio-classes-and-types.html
+\title Enginio Classes and QML Types
+\indexpage Enginio Overview
+\startpage Enginio Overview
+\previouspage Checking stored objects in the Dashboard
+\nextpage Enginio Examples
+
+Enginio provides these \b{C++ classes}:
+\generatelist {classesbymodule enginio-qt}
+Enginio provides these \b{QML types}:
+\annotatedlist engino-qml
+
+\list
+\li \l {Enginio Overview}
+\li \l {Enginio Examples}
+\endlist
+*/
+
+/*!
+\page enginio-examples.html
+\indexpage Enginio Overview
+\startpage Enginio Overview
+\previouspage Enginio Classes and QML Types
+
+\title Enginio Examples
+\brief Using Enginio
+\inmodule enginio-qt
+
+List of examples:
+\annotatedlist enginio-examples
+*/
