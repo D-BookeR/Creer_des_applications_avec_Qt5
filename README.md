@@ -1,7 +1,7 @@
 Créer des applications avec Qt 5
 ===============================
 
-Ce dépôt contient les codes sources des exemples du livre modulaire [Créer des applications avec Qt 5](http://www.d-booker.fr/110-qt-5-les-essentiels.html), dont le premier volet *Les essentiels* va paraître début novembre 2013. Les deux tiers des chapitres sont déjà disponibles en version bêta au format numérique.
+Ce dépôt contient les codes sources des exemples du livre modulaire [Créer des applications avec Qt 5](http://www.d-booker.fr/110-qt-5-les-essentiels.html), dont le premier volet *Les essentiels* est paru en novembre 2013. Disponible sous forme numérique ou imprimé.
 
 ![Couverture du livre](qt-essentiels-couv.jpg)
 
