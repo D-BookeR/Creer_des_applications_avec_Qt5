@@ -1,0 +1,8 @@
+//@extract-start Qt-commun-premiers_programmes-test1-enginio
+[
+    {
+    	"libelle": "Test d'import",
+        "ok": true
+    }
+]
+//@extract-end
