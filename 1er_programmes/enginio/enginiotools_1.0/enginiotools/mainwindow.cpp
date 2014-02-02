@@ -24,19 +24,14 @@
 #include "mainwindow.h"
 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-construct-1-mainwindow-cpp
 MainWindow::MainWindow(QWidget *parent)
   : QDialog(parent)
 {
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-construct-2-mainwindow-cpp
   QCoreApplication::setOrganizationName("DBooker");
   QCoreApplication::setOrganizationDomain("www.d-booker.fr");
   QCoreApplication::setApplicationName("Enginio Toolbox");
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-construct-3-mainwindow-cpp
   QHBoxLayout *outerLayout = new QHBoxLayout(this);
   QWidget *mainWidget = new QWidget;
   QVBoxLayout *mainWidgetLayout = new QVBoxLayout(mainWidget);
@@ -52,13 +47,9 @@ MainWindow::MainWindow(QWidget *parent)
 
   outerLayout->addWidget(mainWidget);
   outerLayout->addWidget(createLogWidget());
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-construct-4-mainwindow-cpp
   mainWidget->setMaximumWidth(400);
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-construct-5-mainwindow-cpp
   connect (m_objectType, &QLineEdit::textChanged,
            [=](const QString &text){
                 actionWidget->setDisabled(text.isEmpty());
@@ -69,17 +60,13 @@ MainWindow::MainWindow(QWidget *parent)
   connect(m_exportFileButton, &QPushButton::clicked, this, &MainWindow::onExportFile);
   connect(m_exportButton, &QPushButton::clicked, this, &MainWindow::onExport);
   connect(m_removeButton, &QPushButton::clicked, this, &MainWindow::onRemove);
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-construct-6-mainwindow-cpp
   m_client = new EnginioClient(this);
 
   connect(m_client, &EnginioClient::error, this, &MainWindow::enginioError);
   connect(m_client, &EnginioClient::finished, this, &MainWindow::enginioFinished);
-//@extract-end
 }
 
-//@extract-start Qt-commun-premiers_programmes-enginio-fin-mainwindow-cpp
 MainWindow::~MainWindow()
 {
 }
@@ -91,9 +78,7 @@ void MainWindow::closeEvent ( QCloseEvent * event )
   QSettings settings;
   settings.setValue("mainBackendId", m_backendId->text());
 }
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-createSetupWidget-mainwindow-cpp
 QWidget *MainWindow::createSetupWidget()
 {
   QWidget *w = new QWidget;
@@ -109,9 +94,7 @@ QWidget *MainWindow::createSetupWidget()
 
   return w;
 }
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-createLogWidget-mainwindow-cpp
 QWidget *MainWindow::createLogWidget()
 {
   QGroupBox *box = new QGroupBox(QObject::tr("Log"));
@@ -128,9 +111,7 @@ QWidget *MainWindow::createLogWidget()
 
   return box;
 }
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-createFilterWidget-mainwindow-cpp
 void createFilterWidget(QPlainTextEdit **edit, QLayout  *layout)
 {
   QGroupBox *box = new QGroupBox(QObject::tr("JSON filter"));
@@ -142,9 +123,7 @@ void createFilterWidget(QPlainTextEdit **edit, QLayout  *layout)
   boxLayout->addWidget(*edit);
   layout->addWidget(box);
 }
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-createFileWidget-mainwindow-cpp
 void createFileWidget(QPushButton **button, QLineEdit **edit, QLayout  *layout)
 {
   QWidget *fileWidget = new QWidget;
@@ -158,9 +137,7 @@ void createFileWidget(QPushButton **button, QLineEdit **edit, QLayout  *layout)
 
   layout->addWidget(fileWidget);
 }
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-addImportPage-mainwindow-cpp
 void MainWindow::addImportPage(QTabWidget *tabWidget)
 {
   QWidget *pageWidget = new QWidget;
@@ -179,9 +156,7 @@ void MainWindow::addImportPage(QTabWidget *tabWidget)
 
   tabWidget->addTab(pageWidget, tr("Import"));
 }
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-addExportPage-mainwindow-cpp
 void MainWindow::addExportPage(QTabWidget *tabWidget)
 {
   QWidget *pageWidget = new QWidget;
@@ -195,9 +170,7 @@ void MainWindow::addExportPage(QTabWidget *tabWidget)
 
   tabWidget->addTab(pageWidget, tr("Export"));
 }
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-addRemovePage-mainwindow-cpp
 void MainWindow::addRemovePage(QTabWidget *tabWidget)
 {
   QWidget *pageWidget = new QWidget;
@@ -210,39 +183,29 @@ void MainWindow::addRemovePage(QTabWidget *tabWidget)
 
   tabWidget->addTab(pageWidget, tr("Remove"));
 }
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-log-mainwindow-cpp
 void MainWindow::log(const QString &msg)
 {
   m_log->appendHtml(QString("<p style='color:black'>%1</p>").arg(msg));
 }
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-logError-mainwindow-cpp
 void MainWindow::logError(const QString &error)
 {
   m_log->appendHtml(QString("<p style='color:red'>%1</p>").arg(error));
 }
-//@extract-end
 
-//@extract-start Qt-commun-premiers_programmes-enginio-logDebug-mainwindow-cpp
 void MainWindow::logDebug(const QString &msg)
 {
   if(m_debugMode->isChecked()) {
     m_log->appendHtml(QString("<p style='color:blue'>%1</p>").arg(msg));
   }
 }
-//@extract-end 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-enginioError-mainwindow-cpp
 void MainWindow::enginioError(EnginioReply *error)
 {
   logError(error->errorString());
 }
-//@extract-end 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-enginioFinished-mainwindow-cpp
 void MainWindow::enginioFinished(EnginioReply *msg)
 {
   if(msg->errorType() != Enginio::ErrorType::NoError) {
@@ -264,8 +227,6 @@ void MainWindow::enginioFinished(EnginioReply *msg)
       logError(tr("Error %1 opening file %2").arg(exportFile.error()).arg(exportFile.fileName()));
     }
   }
-//@extract-end 
-//@extract-start Qt-commun-premiers_programmes-enginio-enginioFinished-2-mainwindow-cpp
   if(msg == m_queryForRemovalReply) {
     QJsonArray jsonArray(m_queryForRemovalReply->data().value("results").toArray());
     foreach(const QJsonValue &v, jsonArray) {
@@ -278,9 +239,7 @@ void MainWindow::enginioFinished(EnginioReply *msg)
 
   msg->deleteLater();
 }
-//@extract-end 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-onImportFile-mainwindow-cpp
 void MainWindow::onImportFile()
 {
   QString selectedFileName = QFileDialog::getOpenFileName();
@@ -288,9 +247,7 @@ void MainWindow::onImportFile()
       m_importFile->setText(selectedFileName);
   }
 }
-//@extract-end 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-onExportFile-mainwindow-cpp
 void MainWindow::onExportFile()
 {
   QString selectedFileName = QFileDialog::getSaveFileName();
@@ -298,16 +255,12 @@ void MainWindow::onExportFile()
       m_exportFile->setText(selectedFileName);
   }
 }
-//@extract-end 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-setClientBackend-mainwindow-cpp
 void MainWindow::setClientBackend()
 {
   m_client->setBackendId(m_backendId->text().toUtf8());
 }
-//@extract-end 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-setObjectType-mainwindow-cpp
 void MainWindow::setObjectType(QJsonObject *o)
 {
   QString objectType = m_objectType->text();
@@ -318,9 +271,7 @@ void MainWindow::setObjectType(QJsonObject *o)
   }
   o->insert("objectType", objectType);
 }
-//@extract-end 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-setObjectFilter-mainwindow-cpp
 bool MainWindow::setObjectFilter(QJsonObject *o, const QString &filterText)
 {
   if(!filterText.isEmpty()) {
@@ -334,9 +285,7 @@ bool MainWindow::setObjectFilter(QJsonObject *o, const QString &filterText)
   }
   return true;
 }
-//@extract-end 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-onImport-mainwindow-cpp
 void MainWindow::onImport()
 {
   setClientBackend();
@@ -353,8 +302,6 @@ void MainWindow::onImport()
     logError(parseError.errorString());
     return;
   }
-//@extract-end 
-//@extract-start Qt-commun-premiers_programmes-enginio-onImport-2-mainwindow-cpp
   QJsonArray jsonArray(jsonDoc.array());
 
   bool create = m_importCreate->isChecked();
@@ -378,9 +325,7 @@ void MainWindow::onImport()
   log(create ? m_importCreate->text() : m_importUpdate->text());
   log(tr("Request to import %1 object(s)").arg(jsonArray.size()));
 }
-//@extract-end 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-onExport-mainwindow-cpp
 void MainWindow::onExport()
 {
   setClientBackend();
@@ -394,9 +339,7 @@ void MainWindow::onExport()
 
   m_exportReply = m_client->query(queryObject);
 }
-//@extract-end 
 
-//@extract-start Qt-commun-premiers_programmes-enginio-onRemove-mainwindow-cpp
 void MainWindow::onRemove()
 {
   setClientBackend();
@@ -410,4 +353,3 @@ void MainWindow::onRemove()
 
   m_queryForRemovalReply = m_client->query(queryObject);
 }
-//@extract-end 

@@ -31,7 +31,6 @@ protected:
 private:
 
   QLineEdit       *m_backendId;
-  QLineEdit       *m_backendSecret;
   QLineEdit       *m_objectType;
   QPushButton     *m_objectTypeTest;
   QPushButton     *m_importFileButton;

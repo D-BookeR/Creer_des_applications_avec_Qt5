@@ -3,7 +3,6 @@
 #include <QTranslator>
 #include <QLibraryInfo>
 
-//@extract-start Qt-commun-premiers_programmes-enginio-main-cpp
 int main(int argc, char *argv[])
 {
   QApplication app(argc, argv);
@@ -24,4 +23,3 @@ int main(int argc, char *argv[])
 
   return app.exec();
 }
-//@extract-end

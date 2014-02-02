@@ -9,11 +9,6 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="93"/>
-        <source>Backend Secret</source>
-        <translation></translation>
-    </message>
-    <message>
         <location filename="mainwindow.cpp" line="96"/>
         <source>Object type</source>
         <translation>Type d&apos;objet</translation>
